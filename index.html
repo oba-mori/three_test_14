@@ -14,6 +14,10 @@ https://www.codegrid.net/articles/2020-webxr-3/
 
 ./WebXR Device APIを使う2.docx
 
+
+XRHitTestSource
+https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestSource
+
 ソースコード
 https://github.com/codegrid/2020-webxr/blob/master/04_xr-hit-test.html
  -->
@@ -79,6 +83,7 @@ const parentFunc = async function () {
   // 任意のモードが利用可能かを調べる
   /*デバイスがWebXR機能のARモードに対応しているかを調べ、結果を変数isArSupportedに代入()*/
   const isArSupported = navigator.xr && await navigator.xr.isSessionSupported( 'immersive-ar' );
+  //await：awaitが付いている処理が終わるまで待機する
 
   // ARモードが利用できなければ起動ボタンを無効化
   /*対応していれば変数に1が入るはず？対応していなければnull*/
@@ -88,25 +93,39 @@ const parentFunc = async function () {
 
 
   // ユーザーが操作して初めて WebXR を起動できる
-  /*AR起動*/
+  /*AR起動ボタンをクリックするとonEnterAR関数が実行される*/
   $button.addEventListener( 'click', onEnterAR );
 
+  //
+  /*asyncを付け同期関数onEnterARを宣言*/
   async function onEnterAR() {
 
+    /*AR起動ボタンを非表示("none"で対象を非表示にする)*/
     $button.style.display = 'none';
 
-    // immersive-ar を渡したときは、カメラからの現実の風景を入力することができる。
-    // 他にも inline や vr のモードがある
-    const xrSession = await navigator.xr.requestSession(
-      'immersive-ar',
-      { requiredFeatures: [ 'local', 'hit-test' ] }
+    //この定型文がある
+    /*関数呼び出し用変数xrSession宣言。navigator.xr.requestSession関数(WebXRの機能)に'immersive-ar'*/
+    const xrSession = await navigator.xr.requestSession
+    (
+      'immersive-ar',   //WebXRをARとして使いたい → 'immersive-ar'を入れるとカメラからの現実の風景を入力することができる
+      { requiredFeatures: [ 'local', 'hit-test' ] } //requiredFeaturesでlocalとhit-testのリストを取得
     );
+
+
+
+
+
 
     // 本来は `getContext( 'webgl' )` で gl コンテキストを引き出す際に
     // オプションとして「`xrCompatible: true`」を明示する必要がある。
     // three.js では常に「`xrCompatible: true`」のオプションがついているので
     // ここでは特別な設定をせずに XR として利用することができる
+
+    /*レンダラー(3Dオブジェクトを表示させる枠？エリア？のようなもの)を作成*/
+    /*レンダラーを作成し、HTML要素のcanvas(idはxrCanvas)要素を渡す。それを変数で呼び出すために変数rendererを宣言*/
     const renderer = new THREE.WebGLRenderer( { canvas: xrCanvas } );
+
+    //
     renderer.autoClear = false;
     renderer.setSize( width, height );
 
