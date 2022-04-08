@@ -84,10 +84,11 @@ const parentFunc = async function () {
   /*対応していれば変数に1が入るはず？対応していなければnull*/
   /*ボタンを無効にするには、buttonタグのHTML要素のdisabledをtrueに変更する。
   ARモードに対応していなければnull → 0が代入されるはずなので、それを反転(0 → 1 つまりtrue)して変更すれば無効できる*/
-  $button.disabled =  isArSupported;
+  $button.disabled =! isArSupported;
 
 
   // ユーザーが操作して初めて WebXR を起動できる
+  /*AR起動*/
   $button.addEventListener( 'click', onEnterAR );
 
   async function onEnterAR() {
