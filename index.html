@@ -63,6 +63,7 @@ const height = window.innerHeight;
 //コード全体:id が'startbutton'(「ARカメラ」というボタン)のHTML要素を、変数$button に代入する
 //結果:$button = 「 <button type="button" id="startButton">ARカメラ起動</button> 」 ← これが要素
 const $button = document.getElementById( 'startButton' );
+//変数名の$buttonの$は変数名の一部"$button"で一つの変数名、$自体に特別な意味があるわけじゃない、おそらくHTML要素を入れている事を分かりやすくするためではないかと思う
 
 
 
@@ -78,11 +79,13 @@ const parentFunc = async function () {
   // 任意のモードが利用可能かを調べる
   /*デバイスがWebXR機能のARモードに対応しているかを調べ、結果を変数isArSupportedに代入()*/
   const isArSupported = navigator.xr && await navigator.xr.isSessionSupported( 'immersive-ar' );
-  console.log(navigator.xr.isSessionSupported( 'immersive-ar' ));  //確認用
 
   // ARモードが利用できなければ起動ボタンを無効化
   /*対応していれば変数に1が入るはず？対応していなければnull*/
-  $button.disabled = ! isArSupported;
+  /*ボタンを無効にするには、buttonタグのHTML要素のdisabledをtrueに変更する。
+  ARモードに対応していなければnull → 0が代入されるはずなので、それを反転(0 → 1 つまりtrue)して変更すれば無効できる*/
+  $button.disabled =  isArSupported;
+
 
   // ユーザーが操作して初めて WebXR を起動できる
   $button.addEventListener( 'click', onEnterAR );
