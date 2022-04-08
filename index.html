@@ -78,9 +78,10 @@ const parentFunc = async function () {
   // 任意のモードが利用可能かを調べる
   /*デバイスがWebXR機能のARモードに対応しているかを調べ、結果を変数isArSupportedに代入()*/
   const isArSupported = navigator.xr && await navigator.xr.isSessionSupported( 'immersive-ar' );
-  console.log(isArSupported);  //確認用
+  console.log(navigator.xr.isSessionSupported( 'immersive-ar' ));  //確認用
 
-  // モードが利用できなければ起動ボタンを無効化
+  // ARモードが利用できなければ起動ボタンを無効化
+  /*対応していれば変数に1が入るはず？対応していなければnull*/
   $button.disabled = ! isArSupported;
 
   // ユーザーが操作して初めて WebXR を起動できる
