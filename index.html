@@ -154,15 +154,18 @@ const parentFunc = async function () {
     const camera = new THREE.PerspectiveCamera();
     camera.matrixAutoUpdate = false;
     
-    //平面に
+
+    /*オブジェクト作成*/
+
+    //平面に対して並行に表示されるグリッド
     scene.add( new THREE.GridHelper( 100, 100 ) );
 
     //オブジェクト-立方体-
-    // const box = new THREE.Mesh(
-    //   new THREE.BoxBufferGeometry( .2, .2, .2 ),
-    //   new THREE.MeshNormalMaterial(),
-    // );
-    // scene.add( box );
+    const box = new THREE.Mesh(
+      new THREE.BoxBufferGeometry( .2, .2, .2 ),
+      new THREE.MeshNormalMaterial(),
+    );
+    scene.add( box );
 
     //オブジェクト-円錐-
     const cone = new THREE.Mesh(
@@ -221,12 +224,12 @@ const parentFunc = async function () {
 
           const pose = hitTestResults[ 0 ].getPose( referenceSpace );
 
-          cone.position.set(
+          box.position.set(
             pose.transform.position.x,
             pose.transform.position.y,
             pose.transform.position.z
           );
-          cone.quaternion.set(
+          box.quaternion.set(
             pose.transform.orientation.x,
             pose.transform.orientation.y,
             pose.transform.orientation.z,
