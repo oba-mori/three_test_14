@@ -10,6 +10,7 @@
 
 <!-- 
 参考
+コード全体の説明
 https://www.codegrid.net/articles/2020-webxr-3/
 
 ./WebXR Device APIを使う2.docx
@@ -20,6 +21,17 @@ https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestSource
 
 ソースコード
 https://github.com/codegrid/2020-webxr/blob/master/04_xr-hit-test.html
+
+
+
+
+
+参考
+
+renderer.autoClearの説明
+https://blog.phoenixdesign.jp/inaba_mitsu/4990
+
+
  -->
 
 
@@ -125,8 +137,8 @@ const parentFunc = async function () {
     /*レンダラーを作成し、HTML要素のcanvas(idはxrCanvas)要素を渡す。それを変数で呼び出すために変数rendererを宣言*/
     const renderer = new THREE.WebGLRenderer( { canvas: xrCanvas } );
 
-    //最後の方に書いてある renderer.render()を呼び出した時......残像を自動的に消すかどうか？falseで消さないようにする？
-    // renderer.autoClear = false;
+    //最後の方に書いてある renderer.render()を呼び出した時 → rendererが前のレンダリング結果を自動的に消すか消さないかを設定する(falseで消さないようにする)
+    renderer.autoClear = false;
     renderer.setSize( width, height );
 
     const gl = renderer.getContext();
@@ -137,11 +149,11 @@ const parentFunc = async function () {
 
     scene.add( new THREE.GridHelper( 100, 100 ) );
 
-    const box = new THREE.Mesh(
-      new THREE.BoxBufferGeometry( .2, .2, .2 ),
-      new THREE.MeshNormalMaterial(),
-    );
-    scene.add( box );
+    // const box = new THREE.Mesh(
+    //   new THREE.BoxBufferGeometry( .2, .2, .2 ),
+    //   new THREE.MeshNormalMaterial(),
+    // );
+    // scene.add( box );
 
     const cone = new THREE.Mesh(
       new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ),
