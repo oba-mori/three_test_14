@@ -231,12 +231,12 @@ const parentFunc = async function () {
     // /*scene.add(); → ()内のオブジェクトをsceneに追加*/
     // scene.add( new THREE.GridHelper( 100, 100 ) );  //オブジェクトをシーンに追加
 
-    // //オブジェクト作成-立方体-
-    // const box = new THREE.Mesh(
-    //   new THREE.BoxBufferGeometry( .2, .2, .2 ),  //寸法
-    //   new THREE.MeshNormalMaterial(),            
-    // );
-    // scene.add( box );   //scene.add(box); → box(立方体)というオブジェクトをシーンに追加(これで画面に描画される)
+    //オブジェクト作成-立方体-
+    const box = new THREE.Mesh(
+      new THREE.BoxBufferGeometry( .2, .2, .2 ),  //寸法
+      new THREE.MeshNormalMaterial(),            
+    );
+    scene.add( box );   //scene.add(box); → box(立方体)というオブジェクトをシーンに追加(これで画面に描画される)
 
     // //オブジェクト作成-円錐-
     // const cone = new THREE.Mesh(
