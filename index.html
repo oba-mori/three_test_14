@@ -2,6 +2,13 @@
   three.module.jsのファイル(のexportしたclass)を直接取り込む
   参考サイトは大抵CDNで取り込んでいるが、ローカルで取り込んだ方が安全
 
+  注意点：
+  ローカルサーバに配置したJSファイルのclassをimportすることは出来ない
+      //JSファイル(のclass)を直接importする場合の書き方
+      import * as THREE from './three.module.js';     //ver113.2
+  GithubのようなWebサーバからJSファイルを読み出す必要がある。
+  CDNから読み出す場合は、それがWebサーバ上に配置されているため問題なくアクセスできる。
+
 
   内容は hittestのコードをそのまま使用している
   (平面検出 → 常に画面の中央に円錐を表示させる)
@@ -108,7 +115,7 @@ const parentFunc = async function () {
   /*AR起動ボタンをクリックするとonEnterAR関数が実行される*/
   $button.addEventListener( 'click', onEnterAR );
 
-  //
+  
   /*asyncを付け同期関数onEnterARを宣言*/
   async function onEnterAR() {
 
@@ -147,8 +154,8 @@ const parentFunc = async function () {
     const camera = new THREE.PerspectiveCamera();
     camera.matrixAutoUpdate = false;
     
-
-    // scene.add( new THREE.GridHelper( 100, 100 ) );
+    //平面に
+    scene.add( new THREE.GridHelper( 100, 100 ) );
 
     //オブジェクト-立方体-
     // const box = new THREE.Mesh(
