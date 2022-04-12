@@ -230,11 +230,11 @@ const parentFunc = async function () {
 
 
 
-    //オブジェクト作成-平面に対して並行に表示されるグリッド-
-    /*scene.add(); → ()内のオブジェクトをsceneに追加*/
+    // //オブジェクト作成-平面に対して並行に表示されるグリッド-
+    // /*scene.add(); → ()内のオブジェクトをsceneに追加*/
     // scene.add( new THREE.GridHelper( 100, 100 ) );  //オブジェクトをシーンに追加
 
-    //オブジェクト作成-立方体-
+    // //オブジェクト作成-立方体-
     // const box = new THREE.Mesh(
     //   new THREE.BoxBufferGeometry( .2, .2, .2 ),  //寸法
     //   new THREE.MeshNormalMaterial(),            
@@ -249,20 +249,20 @@ const parentFunc = async function () {
     // scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
 
 
-    //GLB形式のモデルデータを読み込む
+    // //GLB形式のモデルデータを読み込む
     // const loader = new THREE.GLTFLoader();
 
-    // //glbファイルのパスを指定
-    // loader.load
-    // (
-    //   './cube_medium.glb', 
+    //glbファイルのパスを指定
+    loader.load
+    (
+      './cube_medium.glb', 
       
-    //   function(gltf) 
-    //   {
-    //     // 読み込み後に3D空間に追加
-    //     scene.add(gltf.scene);
-    //   }
-    // );
+      function(gltf) 
+      {
+        // 読み込み後に3D空間に追加
+        scene.add(gltf.scene);
+      }
+    );
 
 
 
