@@ -146,15 +146,18 @@ const parentFunc = async function () {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera();
     camera.matrixAutoUpdate = false;
+    
 
-    scene.add( new THREE.GridHelper( 100, 100 ) );
+    // scene.add( new THREE.GridHelper( 100, 100 ) );
 
+    //オブジェクト-立方体-
     // const box = new THREE.Mesh(
     //   new THREE.BoxBufferGeometry( .2, .2, .2 ),
     //   new THREE.MeshNormalMaterial(),
     // );
     // scene.add( box );
 
+    //オブジェクト-円錐-
     const cone = new THREE.Mesh(
       new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ),
       new THREE.MeshNormalMaterial(),
