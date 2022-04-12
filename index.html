@@ -253,11 +253,16 @@ const parentFunc = async function () {
     const loader = new THREE.GLTFLoader();
 
     //glbファイルのパスを指定
-    loader.load('./cube_medium.glb', function(gltf) 
-    {
-      // 読み込み後に3D空間に追加
-      scene.add(gltf.scene);
-    });
+    loader.load
+    (
+      './cube_medium.glb', 
+      
+      function(gltf) 
+      {
+        // 読み込み後に3D空間に追加
+        scene.add(gltf.scene);
+      }
+    );
 
 
 
@@ -319,12 +324,12 @@ const parentFunc = async function () {
 
           const pose = hitTestResults[ 0 ].getPose( referenceSpace );
 
-          box.position.set(
+          gltf.scene.position.set(
             pose.transform.position.x,
             pose.transform.position.y,
             pose.transform.position.z
           );
-          box.quaternion.set(
+          gltf.scene.quaternion.set(
             pose.transform.orientation.x,
             pose.transform.orientation.y,
             pose.transform.orientation.z,
