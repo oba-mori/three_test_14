@@ -125,8 +125,8 @@ const parentFunc = async function () {
     /*レンダラーを作成し、HTML要素のcanvas(idはxrCanvas)要素を渡す。それを変数で呼び出すために変数rendererを宣言*/
     const renderer = new THREE.WebGLRenderer( { canvas: xrCanvas } );
 
-    //
-    renderer.autoClear = false;
+    //最後の方に書いてある renderer.render()を呼び出した時......残像を自動的に消すかどうか？falseで消さないようにする？
+    // renderer.autoClear = false;
     renderer.setSize( width, height );
 
     const gl = renderer.getContext();
