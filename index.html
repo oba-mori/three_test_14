@@ -241,23 +241,23 @@ const parentFunc = async function () {
     );
     scene.add( box );   //scene.add(box); → box(立方体)というオブジェクトをシーンに追加(これで画面に描画される)
 
-    //オブジェクト作成-円錐-
-    const cone = new THREE.Mesh(
-      new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ), //寸法
-      new THREE.MeshNormalMaterial(),             
-    );
-    scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
+    // //オブジェクト作成-円錐-
+    // const cone = new THREE.Mesh(
+    //   new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ), //寸法
+    //   new THREE.MeshNormalMaterial(),             
+    // );
+    // scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
 
 
     //GLB形式のモデルデータを読み込む
     const loader = new THREE.GLTFLoader();
 
-    // 3ds → glbファイルのパスを指定
-    loader.load('./cube_medium.glb', function(gltf) 
-    {
-      // 読み込み後に3D空間に追加
-      scene.add(gltf.scene);
-    });
+    // // 3ds → glbファイルのパスを指定
+    // loader.load('./cube_medium.glb', function(gltf) 
+    // {
+    //   // 読み込み後に3D空間に追加
+    //   scene.add(gltf.scene);
+    // });
 
 
 
