@@ -115,9 +115,6 @@ https://note.com/npaka/n/na4dd3eaa8e82
 <!-- three.min.js(r113.2)を(ファイルから直接)読み込む three.js(r113.2)の圧縮版 -->
 <script src="./three.min.js"></script>
 
-<!-- OrbitControls.js(r113.2)を(ファイルから直接)読み込む -->
-<script src="./OrbitControls.js"></script>
-
 <!-- GLTFLoader.js(r113.2)を(ファイルから直接)読み込む -->
 <script src="./GLTFLoader.js"></script>
 
@@ -249,14 +246,14 @@ const parentFunc = async function () {
     // scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
 
 
-    //GLB形式のモデルデータを読み込む
-    const loader = new THREE.GLTFLoader();
+    // //GLB形式のモデルデータを読み込む
+    // const loader = new THREE.GLTFLoader();
 
-    //glbファイルのパスを指定
-    loader.load('./cube_medium.glb', function(gltf) {
-        // 読み込み後に3D空間に追加
-        scene.add(gltf.scene);
-    });
+    // //glbファイルのパスを指定
+    // loader.load('./cube_medium.glb', function(gltf) {
+    //     // 読み込み後に3D空間に追加
+    //     scene.add(gltf.scene);
+    // });
 
 
 
