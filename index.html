@@ -155,21 +155,20 @@ const parentFunc = async function () {
     camera.matrixAutoUpdate = false;
     
 
-    /*オブジェクト作成*/
 
-    //平面に対して並行に表示されるグリッド
+    //オブジェクト作成-平面に対して並行に表示されるグリッド-
     scene.add( new THREE.GridHelper( 100, 100 ) );
 
-    //オブジェクト-立方体-
+    //オブジェクト作成-立方体-
     const box = new THREE.Mesh(
-      new THREE.BoxBufferGeometry( .2, .2, .2 ),
+      new THREE.BoxBufferGeometry( .5, .5, .2 ),
       new THREE.MeshNormalMaterial(),
     );
     scene.add( box );
 
-    //オブジェクト-円錐-
+    //オブジェクト作成-円錐-
     const cone = new THREE.Mesh(
-      new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ),
+      new THREE.ConeGeometry( 0.1, 0.5, 10, 10 ),
       new THREE.MeshNormalMaterial(),
     );
     scene.add( cone );
