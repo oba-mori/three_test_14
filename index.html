@@ -241,12 +241,12 @@ const parentFunc = async function () {
     );
     scene.add( box );   //scene.add(box); → box(立方体)というオブジェクトをシーンに追加(これで画面に描画される)
 
-    //オブジェクト作成-円錐-
-    const cone = new THREE.Mesh(
-      new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ), //寸法
-      new THREE.MeshNormalMaterial(),             
-    );
-    scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
+    // //オブジェクト作成-円錐-
+    // const cone = new THREE.Mesh(
+    //   new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ), //寸法
+    //   new THREE.MeshNormalMaterial(),             
+    // );
+    // scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
 
 
     //GLB形式のモデルデータを読み込む
@@ -324,12 +324,12 @@ const parentFunc = async function () {
 
           const pose = hitTestResults[ 0 ].getPose( referenceSpace );
 
-          gltf.scene.position.set(
+          box.position.set(
             pose.transform.position.x,
             pose.transform.position.y,
             pose.transform.position.z
           );
-          gltf.scene.quaternion.set(
+          box.quaternion.set(
             pose.transform.orientation.x,
             pose.transform.orientation.y,
             pose.transform.orientation.z,
