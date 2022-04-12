@@ -120,7 +120,7 @@ const parentFunc = async function () {
   async function onEnterAR() {
 
     /*AR起動ボタンを非表示("none"で対象を非表示にする)*/
-    $button.style.display = 'none';
+    // $button.style.display = 'none';
 
     //この定型文がある
     /*関数呼び出し用変数xrSession宣言。navigator.xr.requestSession関数(WebXRの機能)に'immersive-ar'*/
@@ -146,7 +146,11 @@ const parentFunc = async function () {
 
     //最後の方に書いてある renderer.render()を呼び出した時 → rendererが前のレンダリング結果を自動的に消すか消さないかを設定する(falseで消さないようにする)
     renderer.autoClear = false;
-    renderer.setSize( width, height );
+
+    //レンダラーのサイズを調整(画面の幅・高さに合わせる)
+    renderer.setSize( width, height );  //width：幅、height：高さ
+
+
 
     const gl = renderer.getContext();
 
@@ -161,17 +165,19 @@ const parentFunc = async function () {
 
     //オブジェクト作成-立方体-
     const box = new THREE.Mesh(
-      new THREE.BoxBufferGeometry( .5, .5, .2 ),
-      new THREE.MeshNormalMaterial(),
+      new THREE.BoxBufferGeometry( .2, .2, .2 ),  //寸法
+      new THREE.MeshNormalMaterial(),             //
     );
     scene.add( box );
 
     //オブジェクト作成-円錐-
     const cone = new THREE.Mesh(
-      new THREE.ConeGeometry( 0.1, 0.5, 10, 10 ),
-      new THREE.MeshNormalMaterial(),
+      new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ), //寸法
+      new THREE.MeshNormalMaterial(),             //
     );
     scene.add( cone );
+
+
 
     // 「デバイスのカメラから取り込まれた現実の風景」の受け先となる、baseLayer を作る。
     const xrWebGLLayer = new XRWebGLLayer( xrSession, gl );
