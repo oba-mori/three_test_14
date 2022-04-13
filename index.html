@@ -249,11 +249,11 @@ const parentFunc = async function () {
     // //GLB形式のモデルデータを読み込む
     // const loader = new THREE.GLTFLoader();
 
-    // //glbファイルのパスを指定
-    // loader.load('./cube_medium.glb', function(gltf) {
-    //     // 読み込み後に3D空間に追加
-    //     scene.add(gltf.scene);
-    // });
+    //glbファイルのパスを指定
+    loader.load('./cube_medium.glb', function(gltf) {
+        // 読み込み後に3D空間に追加
+        scene.add(gltf.scene);
+    });
 
 
 
@@ -361,7 +361,8 @@ const parentFunc = async function () {
 
 }               
 parentFunc();   
-/* 「const parentFunc = async () => { 」または「const parentFunc = async function () { 」を使用する場合は直上の
+/* 「const parentFunc = async () => { 」または「const parentFunc = async function () { 」を使用する場合は直上のコード
+つまり
 --ここから--
   }
   parentFunc();
