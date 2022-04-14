@@ -116,8 +116,9 @@ https://note.com/npaka/n/na4dd3eaa8e82
 <script src="./three.min.js"></script>
 
 <!-- GLTFLoader.js(r113.2)を(ファイルから直接)読み込む -->
-<script src="./GLTFLoader.js"></script>
+<!-- <script src="./GLTFLoader.js"></script> -->
 
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@master/examples/js/loaders/GLTFLoader.js"></script>
 
 
 <script type="module">
@@ -247,7 +248,7 @@ const parentFunc = async function () {
 
 
     //GLB形式のモデルデータを読み込む
-    const loader = new THREE.GLTFLoader();
+    // const loader = new THREE.GLTFLoader();
 
     // //glbファイルのパスを指定
     // loader.load('./cube_small.glb', function(gltf) {
