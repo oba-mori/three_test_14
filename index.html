@@ -228,23 +228,23 @@ const parentFunc = async function () {
     // /*scene.add(); → ()内のオブジェクトをsceneに追加*/
     // scene.add( new THREE.GridHelper( 100, 100 ) );  //オブジェクトをシーンに追加
 
-    // //オブジェクト作成-立方体-
-    // const box = new THREE.Mesh(
-    //   new THREE.BoxBufferGeometry( .2, .2, .2 ),  //寸法
-    //   new THREE.MeshNormalMaterial(),            
-    // );
-    // scene.add( box );   //scene.add(box); → box(立方体)というオブジェクトをシーンに追加(これで画面に描画される)
+    //オブジェクト作成-立方体-
+    const box = new THREE.Mesh(
+      new THREE.BoxBufferGeometry( .2, .2, .2 ),  //寸法
+      new THREE.MeshNormalMaterial(),            
+    );
+    scene.add( box );   //scene.add(box); → box(立方体)というオブジェクトをシーンに追加(これで画面に描画される)
 
-    // //オブジェクト作成-円錐-
-    // const cone = new THREE.Mesh(
-    //   new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ), //寸法
-    //   new THREE.MeshNormalMaterial(),             
-    // );
-    // scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
+    //オブジェクト作成-円錐-
+    const cone = new THREE.Mesh(
+      new THREE.ConeGeometry( 0.1, 0.5, 32, 32 ), //寸法
+      new THREE.MeshNormalMaterial(),             
+    );
+    scene.add( cone );  //coneというオブジェクト(円錐)をシーンに追加(これで画面に描画される)
 
 
     //GLB形式のモデルデータを読み込む
-    const loader = new THREE.GLTFLoader();
+    // const loader = new THREE.GLTFLoader();
 
     // //glbファイルのパスを指定
     // loader.load('./cube_small.glb', function(gltf) {
@@ -311,13 +311,27 @@ const parentFunc = async function () {
         if ( hitTestResults.length > 0 ) {
 
           const pose = hitTestResults[ 0 ].getPose( referenceSpace );
-
+          
+          //立方体
           box.position.set(
             pose.transform.position.x,
             pose.transform.position.y,
             pose.transform.position.z
           );
           box.quaternion.set(
+            pose.transform.orientation.x,
+            pose.transform.orientation.y,
+            pose.transform.orientation.z,
+            pose.transform.orientation.w,
+          );
+
+          //円錐
+          cone.position.set(
+            pose.transform.position.x,
+            pose.transform.position.y,
+            pose.transform.position.z
+          );
+          cone.quaternion.set(
             pose.transform.orientation.x,
             pose.transform.orientation.y,
             pose.transform.orientation.z,
